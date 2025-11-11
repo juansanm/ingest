@@ -32,5 +32,15 @@ aws s3 mb s3://$BUCKET_NAME --region $REGION
 # Verificar
 aws s3 ls s3://$BUCKET_NAME/ --recursive
 
+git --version
+git init
+git remote add origin https://github.com/juansanm/ingest.git
+git branch -M main
 
+git add .
+git commit -m "Primer commit - subir script alumnosS3.py"
+git push -u origin main
 
+git add .github/workflows/upload.yml
+git commit -m "Agrego workflow para automatizar subida a S3"
+git push
