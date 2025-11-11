@@ -2,8 +2,8 @@ name: Subir alumnos.csv a S3 diariamente
 
 on:
   schedule:
-    - cron: '0 21 * * *'  # 4 p.m. Colombia = 21:00 UTC
-  workflow_dispatch:       # permite ejecutarlo manualmente
+    - cron: "0 21 * * *"   # 21:00 UTC = 4 pm Colombia
+  workflow_dispatch:
 
 jobs:
   upload:
@@ -16,11 +16,16 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Instalar dependencias
         run: |
           pip install boto3 pandas pyarrow
+
+      - name: Copiar alumnos.csv a Downloads
+        run: |
+          mkdir -p ~/Downloads
+          cp alumnos.csv ~/Downloads/alumnos.csv
 
       - name: Ejecutar script de subida
         env:
