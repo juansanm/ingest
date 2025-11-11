@@ -2,7 +2,7 @@ name: Subir alumnos.csv a S3 diariamente
 
 on:
   schedule:
-    - cron: "0 21 * * *"   # 21:00 UTC = 4 pm Colombia
+    - cron: "0 12 * * *"   # 21:00 UTC = 4 pm Colombia
   workflow_dispatch:
 
 jobs:
